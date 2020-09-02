@@ -1,4 +1,4 @@
-# Instructions for Etch-A-Sketch Project==
+# Instructions for Etch-A-Sketch Project
 
 1. Follow the instructions atop Odin’s Google Homepage project to setup a git repository for this project.
 2. Create a webpage with a 16x16 grid of square divs
