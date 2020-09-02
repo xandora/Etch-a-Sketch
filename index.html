@@ -7,8 +7,9 @@
 </head>
 <body>
     <script>
-        const gridSize = 40;
-        const cellSize = 20;
+        const gridWidth = 800;
+        const cellSize = 40;
+        const gridSize = gridWidth / cellSize;
         const container = document.createElement("div");
 
         function randoColour() {
@@ -30,8 +31,8 @@
                 container.append(cell);
                 }
             }
-            container.style.margin = "auto";
-            container.style.width = (gridSize * cellSize) + "px";
+            container.style.margin = "10vh auto auto auto";
+            container.style.width = (gridWidth) + "px";
             container.style.gridTemplateColumns = "repeat(" + gridSize + ", " + cellSize +"px)";
             container.style.display = "grid";
             document.body.appendChild(container);
