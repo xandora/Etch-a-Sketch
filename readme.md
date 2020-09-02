@@ -8,7 +8,7 @@
         1.   float/clear
         2.  inline-block
         3. flexbox
-        iv.  CSS Grid
+        4.  CSS Grid
     4. Be careful with borders and margins, they can adjust the size of the squares!
     5. “OMG, Why isn’t my grid being created???”
         1.   Open your browser’s developer tools
