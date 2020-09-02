@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <script>
+        const gridSize = 40;
+        const cellSize = 20;
+        const container = document.createElement("div");
+
+        function randoColour() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function createGrid(gridSize, cellSize) {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {    
+                const cell = document.createElement("div");
+                cell.className = "gridCell";
+                cell.style.height = cellSize + "px";
+                cell.style.width = cellSize + "px";
+                cell.style.display = "inline-block";
+                cell.style.border = "1px solid black";
+                container.append(cell);
+                }
+            }
+            container.style.margin = "auto";
+            container.style.width = (gridSize * cellSize) + "px";
+            container.style.gridTemplateColumns = "repeat(" + gridSize + ", " + cellSize +"px)";
+            container.style.display = "grid";
+            document.body.appendChild(container);
+        };
+
+        createGrid(gridSize, cellSize);
+        let gridCell = document.getElementsByClassName("gridCell");
+        for (let i = 0; i < gridCell.length; i++) {            
+            gridCell[i].addEventListener("mouseover", function(event) {
+                event.target.style.backgroundColor = randoColour();
+                setTimeout(function() {
+                    event.target.style.backgroundColor = "";
+                }, 1500);
+            }, false);
+        };
+    </script>   
+</body>
+</html>
