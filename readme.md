@@ -26,4 +26,3 @@
     3. You should be able to enter 64 and have a brand new 64x64 grid pop up without changing the total amount of pixels used
 5. (Optional): Instead of just changing the color of your grid from black to white (for example) have each pass through it with the mouse change to a completely random RGB value. Then try having each pass just add another 10% of black to it so that only after 10 passes is the square completely black.
 6. Push your project to GitHub!
-

@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
+    <style>
+        h1 { text-align: center; }
+    </style>
 </head>
 <body>
+    <h1>Etch-a-Sketch!</h1>
     <script>
         const gridWidth = 800;
         const cellSize = 40;
-        const gridSize = gridWidth / cellSize;
         const container = document.createElement("div");
 
         function randoColour() {
@@ -19,7 +22,8 @@
             return `rgb(${r}, ${g}, ${b})`;
         }
 
-        function createGrid(gridSize, cellSize) {
+        function createGrid(cellSize) {
+            const gridSize = gridWidth / cellSize;
             for (let i = 0; i < gridSize; i++) {
                 for (let j = 0; j < gridSize; j++) {    
                 const cell = document.createElement("div");
@@ -29,25 +33,27 @@
                 cell.style.display = "inline-block";
                 cell.style.border = "1px solid black";
                 container.append(cell);
-                }
-            }
-            container.style.margin = "10vh auto auto auto";
+                };
+            };
+            container.style.margin = "auto";
             container.style.width = (gridWidth) + "px";
             container.style.gridTemplateColumns = "repeat(" + gridSize + ", " + cellSize +"px)";
             container.style.display = "grid";
             document.body.appendChild(container);
+            
+            let gridCell = document.getElementsByClassName("gridCell");
+            for (let i = 0; i < gridCell.length; i++) {            
+                gridCell[i].addEventListener("mouseover", function(event) {
+                    event.target.style.backgroundColor = randoColour();
+                    setTimeout(function() {
+                        event.target.style.backgroundColor = "";
+                    }, 1500);
+                }, false);
+            };
         };
 
-        createGrid(gridSize, cellSize);
-        let gridCell = document.getElementsByClassName("gridCell");
-        for (let i = 0; i < gridCell.length; i++) {            
-            gridCell[i].addEventListener("mouseover", function(event) {
-                event.target.style.backgroundColor = randoColour();
-                setTimeout(function() {
-                    event.target.style.backgroundColor = "";
-                }, 1500);
-            }, false);
-        };
+        createGrid(cellSize);
+        
     </script>   
 </body>
 </html>
