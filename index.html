@@ -15,6 +15,8 @@
         const cellSize = 40;
         const container = document.createElement("div");
 
+        // Header
+
         function randoColour() {
             const r = Math.floor(Math.random() * 256);
             const g = Math.floor(Math.random() * 256);
@@ -45,9 +47,6 @@
             for (let i = 0; i < gridCell.length; i++) {            
                 gridCell[i].addEventListener("mouseover", function(event) {
                     event.target.style.backgroundColor = randoColour();
-                    setTimeout(function() {
-                        event.target.style.backgroundColor = "";
-                    }, 1500);
                 }, false);
             };
         };
