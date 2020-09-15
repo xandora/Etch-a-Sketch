@@ -9,13 +9,25 @@
     </style>
 </head>
 <body>
-    <h1>Etch-a-Sketch!</h1>
     <script>
         const gridWidth = 800;
-        const cellSize = 40;
+        const cellNumber = 8;
         const container = document.createElement("div");
 
         // Header
+        const header = document.createElement("div");
+        const pageTitle = document.createElement("h1");
+        const clearBtn = document.createElement("button");
+        clearBtn.textContent = "Reset Grid";
+        clearBtn.addEventListener('click', resetGrid);
+        pageTitle.textContent = "Etch-a-Sketch!";
+        header.id = "header";
+        header.style.margin = "auto";
+        header.style.width = gridWidth + "px";
+        header.appendChild(pageTitle);
+        header.appendChild(clearBtn);
+        document.body.appendChild(header);
+        
 
         function randoColour() {
             const r = Math.floor(Math.random() * 256);
@@ -24,10 +36,10 @@
             return `rgb(${r}, ${g}, ${b})`;
         }
 
-        function createGrid(cellSize) {
-            const gridSize = gridWidth / cellSize;
-            for (let i = 0; i < gridSize; i++) {
-                for (let j = 0; j < gridSize; j++) {    
+        function createGrid(cellNumber) {
+            const cellSize = gridWidth / cellNumber;
+            for (let i = 0; i < cellNumber; i++) {
+                for (let j = 0; j < cellNumber; j++) {    
                 const cell = document.createElement("div");
                 cell.className = "gridCell";
                 cell.style.height = cellSize + "px";
@@ -38,8 +50,8 @@
                 };
             };
             container.style.margin = "auto";
-            container.style.width = (gridWidth) + "px";
-            container.style.gridTemplateColumns = "repeat(" + gridSize + ", " + cellSize +"px)";
+            container.style.width = gridWidth + "px";
+            container.style.gridTemplateColumns = "repeat(" + cellNumber + ", " + cellSize +"px)";
             container.style.display = "grid";
             document.body.appendChild(container);
             
@@ -51,7 +63,21 @@
             };
         };
 
-        createGrid(cellSize);
+        function resetGrid() {
+            let grid = document.getElementsByClassName("gridCell");
+            for (let i = grid.length - 1; i >=0; i--) {
+                const element = grid[i];
+                container.removeChild(element);
+            }
+            let newCellNumber = prompt("Enter the size of the grid you want");
+            if (newCellNumber > 150) {
+                alert("Whoops! That's a lot of cells! Maybe try something smaller...");
+                newCellNumber = cellNumber;
+            }
+            createGrid(newCellNumber);
+        }
+
+        createGrid(cellNumber);
         
     </script>   
 </body>
